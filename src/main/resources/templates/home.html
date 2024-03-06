@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+      <section>
+          <div class="container p-3">
+
+              <div class="row">
+
+                  <div class="col-md-8 offset-md-2">
+
+                      <div class="card">
+
+                          <div class="  card-header text-center fs-4 ">Student Update From</div>
+
+                          <th:block th:if="${session.msg}">
+                              <p class="text-center text-success">[[${session.msg}]]</p>
+                              <th:block th:text="${@studentServiceImpl.removeSessionMessage()}"></th:block>
+                          </th:block>
+
+                          <div class="card-body">
+<!--                                  <form th:action="/student/addStudentRegister"  method="POST">-->
+                                      <form th:action="@{/student/edit/{id}(id=${studentRegister.id})}" th:object="${studentRegister}"  method="POST">
+                                      <input type="hidden" name="id" value="${studentRegister.id}">
+                                  <!-- name field -->
+
+                                  <div class="form-group">
+
+                                      <label for="studentName-field">Student's Name</label>
+
+                                      <input type="text"
+                                             name="studentName"
+                                             th:value="${studentRegister.studentName}"
+                                             class="form-control"
+                                             id="studentName-field"
+                                             placeholder="Enter here"
+                                             required />
+                                  </div>
+
+                                  <div class="form-group">
+
+                                      <label for="className1-field">Class</label>
+
+                                      <input type="text"
+                                             name="className1"
+                                             th:value="${studentRegister.className1}"
+                                             class="form-control"
+                                             id="className1-field"
+                                             placeholder="Enter here"
+                                             required />
+                                  </div>
+
+                                  <div class="form-group">
+
+                                      <label for="fatherName-field">Father's Name</label>
+
+                                      <input type="text"
+                                             name="fatherName"
+                                             th:value="${studentRegister.fatherName}"
+                                             class="form-control"
+                                             id="fatherName-field"
+                                             placeholder="Enter here"
+                                             required />
+                                  </div>
+
+                                  <div class="form-group">
+
+                                      <label for="motherName-field">Mother's Name</label>
+
+                                      <input type="text"
+                                             name="motherName"
+                                             th:value="${studentRegister.motherName}"
+                                             class="form-control"
+                                             id="motherName-field"
+                                             placeholder="Enter here"
+                                             required />
+                                  </div>
+
+                                  <div class="form-group">
+
+                                      <label for="mobile-field">Contact Number</label>
+
+                                      <input type="text"
+                                             name="mobile"
+                                             th:value="${studentRegister.mobile}"
+                                             class="form-control"
+                                             id="mobile-field"
+                                             placeholder="Enter here"
+                                             required />
+                                  </div>
+
+
+                                  <div class="form-group">
+
+                                      <label for="registerFees-field">Student RegisterFees</label>
+
+                                      <input type="text"
+                                             name="registerFees"
+                                             th:value="${studentRegister.registerFees}"
+                                             class="form-control"
+                                             id="registerFees-field"
+                                             placeholder="Enter here"
+                                             required />
+                                  </div>
+
+                                  <div class="form-group">
+
+                                      <label for="admissionDate-field">Student Admission Date</label>
+
+                                      <input type="date"
+                                             name="admissionDate"
+                                             th:value="${studentRegister.admissionDate}"
+                                             class="form-control"
+                                             id="admissionDate-field"
+                                             placeholder="Enter here"
+                                             required />
+                                  </div>
+
+                                  <div class="form-group">
+
+                                      <label for="address-field">Address </label>
+
+                                      <input type="text"
+                                             name="address"
+                                             th:value="${studentRegister.address}"
+                                             class="form-control"
+                                             id="address-field"
+                                             placeholder="Enter here"
+                                             required />
+                                  </div>
+
+
+                                  <div class="form-group">
+
+                                      <label for="country-field">Country </label>
+
+                                      <input type="text"
+                                             name="country"
+                                             th:value="${studentRegister.country}"
+                                             class="form-control"
+                                             id="country-field"
+                                             placeholder="Enter here"
+                                             required />
+                                  </div>
+
+
+                                  <div class="container text-center">
+
+                                      <button type="submit" class="btn bg-primary text-white m-2" >Update Student</button>
+                                      <button type="button" class="btn  btn-secondary m-2" ><a href="/student/profile">Back To Student Admission Form</a></button>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+</body>
+</html>

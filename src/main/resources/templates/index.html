@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+      <section>
+          <div class="container p-3">
+
+              <div class="row">
+
+                  <div class="col-md-15">
+
+                      <div class="card">
+                          <div class="card-header text-center fs-4 ">Student Report</div>
+
+                          <div class="card-body">
+                                  <table border="1" class="table table-sm table-dark">
+                                      <thead>
+                                          <tr>
+                                              <th>
+                                                  <a th:href="@{'/page/' + ${currentPage} + '?sortField=studentName&sortDir=' + ${reverseSortDir}}"> Student Name</a>
+                                              </th>
+                                              <th>
+                                                  <a th:href="@{'/page/' + ${currentPage} + '?sortField=studentName&sortDir=' + ${reverseSortDir}}"> Class</a>
+                                              </th>
+                                              <th>
+                                                  <a th:href="@{'/page/' + ${currentPage} + '?sortField=studentName&sortDir=' + ${reverseSortDir}}"> Father Name</a>
+                                              </th>
+                                              <th>
+                                                  <a th:href="@{'/page/' + ${currentPage} + '?sortField=studentName&sortDir=' + ${reverseSortDir}}"> Mother Name</a>
+                                              </th>
+                                              <th>
+                                                  <a th:href="@{'/page/' + ${currentPage} + '?sortField=studentName&sortDir=' + ${reverseSortDir}}"> Mobile Number</a>
+                                              </th>
+                                              <th>
+                                                  <a th:href="@{'/page/' + ${currentPage} + '?sortField=studentName&sortDir=' + ${reverseSortDir}}"> Register Fees</a>
+                                              </th>
+                                              <th>
+                                                  <a th:href="@{'/page/' + ${currentPage} + '?sortField=studentName&sortDir=' + ${reverseSortDir}}"> Admission Date</a>
+                                              </th>
+                                              <th>
+                                                  <a th:href="@{'/page/' + ${currentPage} + '?sortField=studentName&sortDir=' + ${reverseSortDir}}"> Address</a>
+                                              </th>
+                                              <th>
+                                                  <a th:href="@{'/page/' + ${currentPage} + '?sortField=studentName&sortDir=' + ${reverseSortDir}}"> Country</a>
+                                              </th>
+                                              <th>Action</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          <tr  th:each="studentRegister : ${studentRegisterList}">
+                                              <td th:text="${studentRegister.studentName}"></td>
+                                              <td th:text="${studentRegister.className1}"></td>
+                                              <td th:text="${studentRegister.fatherName}"></td>
+                                              <td th:text="${studentRegister.motherName}"></td>
+                                              <td th:text="${studentRegister.mobile}"></td>
+                                              <td th:text="${studentRegister.registerFees}"></td>
+                                              <td th:text="${studentRegister.admissionDate}"></td>
+                                              <td th:text="${studentRegister.address}"></td>
+                                              <td th:text="${studentRegister.country}"></td>
+                                              <td>
+                                                  <a th:href="@{/updateStudentRegister/{id}(id=${studentRegister.id})}" class="btn btn-warning"  style="font-size: 10px;">Update</a>
+                                                  <a th:href="@{/deleteStudentRegister/{id}(id=${studentRegister.id})}" class="btn btn-danger" style="font-size: 10px">Delete</a>
+                                              </td>
+                                          </tr>
+                                      </tbody>
+                                  </table>
+                              <div>
+                                  <button type="button" class="btn  btn-danger m-2" ><a href="/student/profile">Back To Student Admission Form</a></button>
+                              </div>
+                              <div th:if= "${totalPages > 1}">
+                                  <div class="row col-sm-10">
+                                      <div class="col-sm-2">
+                                          Total Rows: [[${totalItems}]]
+                                      </div>
+                                      <div class= "col-sm-1">
+                                            <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                                                <a th:if="${currentPage != i}" th:href="@{'/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+                                                <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp;&nbsp;
+                                            </span>
+                                      </div>
+
+                                      <div class="col-sm-1">
+                                          <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+                                          <span th:unless="${currentPage < totalPages}">Next</span>
+                                      </div>
+
+                                      <div class="col-sm-1">
+                                          <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+                                          <span th:unless="${currentPage < totalPages}"> Last </span>
+                                      </div>
+
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+ </body>
+</html>

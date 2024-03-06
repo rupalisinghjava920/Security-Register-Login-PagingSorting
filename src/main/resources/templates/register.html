@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Page</title>
+</head>
+<body>
+
+         <section>
+             <div class="container p-3">
+
+                 <div class="row">
+
+                     <div class="col-md-8 offset-md-2">
+
+                         <div class="card">
+                             <div class="card-header text-center fs-4 ">Register Page</div>
+
+                             <th:block th:if="${session.msg}">
+                                 <p class="text-center text-success">[[${session.msg}]]</p>
+                                 <th:block th:text="${@studentServiceImpl.removeSessionMessage()}"></th:block>
+                             </th:block>
+
+                                <div class="card-body">
+                                     <form  action="saveRegister" method="POST">
+
+                                         <!-- name field -->
+
+                                         <div class="form-group">
+
+                                             <label for="name-field">Student's Name</label>
+
+                                             <input type="text"
+                                                    name="name"
+                                                    class="form-control"
+                                                    id="name-field"
+                                                    placeholder="Enter here"
+                                                    required=
+                                                           />
+                                         </div>
+
+                                         <div class="form-group">
+
+                                             <label for="email-field">Email</label>
+
+                                             <input type="email"
+                                                    name="email"
+                                                    class="form-control"
+                                                    id="email-field"
+                                                    placeholder="Enter here"
+                                                    required />
+                                         </div>
+
+                                         <div class="form-group">
+
+                                             <label for="role-field">Student Role</label>
+
+                                             <input type="role"
+                                                    name="role"
+                                                    class="form-control"
+                                                    id="role-field"
+                                                    placeholder="Enter here"
+                                                    required />
+                                         </div>
+
+                                         <div class="form-group">
+
+                                             <label for="password-field">Password</label>
+                                             <input type="password" name="password" class="form-control" id="password-field" placeholder="Enter here" required/>
+                                         </div>
+
+                                         <div class="container text-center">
+
+                                             <button type="submit" class="btn bg-primary text-white m-2" >
+                                                 Register
+                                             </button>
+
+                                             <button type="reset" class="btn btn-warning">
+                                                 Clear
+                                             </button>
+
+                                         </div>
+                                     </form>
+                                </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+          </section>
+ </body>
+</html>
