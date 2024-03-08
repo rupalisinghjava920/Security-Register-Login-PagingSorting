@@ -18,4 +18,7 @@ public interface StudentRegisterService {
 
     Page<StudentRegister> findPaginated(int pageNo , int pageSize,String sortField,String sortDirection);
 
+     public List<StudentRegister> getStudentRegisterByStudentName(String studentName);
+
+
 }

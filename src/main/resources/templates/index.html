@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        a {
+            text-decoration: none; /* Removes underline */
+        }
+    </style>
 </head>
 <body>
       <section>
@@ -16,35 +21,35 @@
                           <div class="card-header text-center fs-4 ">Student Report</div>
 
                           <div class="card-body">
-                                  <table border="1" class="table table-sm table-dark">
+                                  <table border="1" class="table table-sm table-striped">
                                       <thead>
                                           <tr>
                                               <th>
                                                   <a th:href="@{'/page/' + ${currentPage} + '?sortField=studentName&sortDir=' + ${reverseSortDir}}"> Student Name</a>
                                               </th>
                                               <th>
-                                                  <a th:href="@{'/page/' + ${currentPage} + '?sortField=studentName&sortDir=' + ${reverseSortDir}}"> Class</a>
+                                                  <a th:href="@{'/page/' + ${currentPage} + '?sortField=className1&sortDir=' + ${reverseSortDir}}"> Class</a>
                                               </th>
                                               <th>
-                                                  <a th:href="@{'/page/' + ${currentPage} + '?sortField=studentName&sortDir=' + ${reverseSortDir}}"> Father Name</a>
+                                                  <a th:href="@{'/page/' + ${currentPage} + '?sortField=fatherName&sortDir=' + ${reverseSortDir}}"> Father Name</a>
                                               </th>
                                               <th>
-                                                  <a th:href="@{'/page/' + ${currentPage} + '?sortField=studentName&sortDir=' + ${reverseSortDir}}"> Mother Name</a>
+                                                  <a th:href="@{'/page/' + ${currentPage} + '?sortField=motherName&sortDir=' + ${reverseSortDir}}"> Mother Name</a>
                                               </th>
                                               <th>
-                                                  <a th:href="@{'/page/' + ${currentPage} + '?sortField=studentName&sortDir=' + ${reverseSortDir}}"> Mobile Number</a>
+                                                  <a th:href="@{'/page/' + ${currentPage} + '?sortField=mobile&sortDir=' + ${reverseSortDir}}"> Mobile Number</a>
                                               </th>
                                               <th>
-                                                  <a th:href="@{'/page/' + ${currentPage} + '?sortField=studentName&sortDir=' + ${reverseSortDir}}"> Register Fees</a>
+                                                  <a th:href="@{'/page/' + ${currentPage} + '?sortField=registerFees&sortDir=' + ${reverseSortDir}}"> Register Fees</a>
                                               </th>
                                               <th>
-                                                  <a th:href="@{'/page/' + ${currentPage} + '?sortField=studentName&sortDir=' + ${reverseSortDir}}"> Admission Date</a>
+                                                  <a th:href="@{'/page/' + ${currentPage} + '?sortField=admissionDate&sortDir=' + ${reverseSortDir}}"> Admission Date</a>
                                               </th>
                                               <th>
-                                                  <a th:href="@{'/page/' + ${currentPage} + '?sortField=studentName&sortDir=' + ${reverseSortDir}}"> Address</a>
+                                                  <a th:href="@{'/page/' + ${currentPage} + '?sortField=address&sortDir=' + ${reverseSortDir}}"> Address</a>
                                               </th>
                                               <th>
-                                                  <a th:href="@{'/page/' + ${currentPage} + '?sortField=studentName&sortDir=' + ${reverseSortDir}}"> Country</a>
+                                                  <a th:href="@{'/page/' + ${currentPage} + '?sortField=country&sortDir=' + ${reverseSortDir}}"> Country</a>
                                               </th>
                                               <th>Action</th>
                                           </tr>
@@ -68,7 +73,7 @@
                                       </tbody>
                                   </table>
                               <div>
-                                  <button type="button" class="btn  btn-danger m-2" ><a href="/student/profile">Back To Student Admission Form</a></button>
+                              <p align="right"><a href="/student/profile">Student Admission Form</a></p>
                               </div>
                               <div th:if= "${totalPages > 1}">
                                   <div class="row col-sm-10">

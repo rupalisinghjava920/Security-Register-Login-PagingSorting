@@ -36,7 +36,7 @@ public class SecurityConfig {
         http.csrf().disable()
                 .authorizeHttpRequests()
                 .requestMatchers("/", "/register", "/login", "/signin", "/saveRegister").permitAll()
-                .requestMatchers("/student/addStudentRegister","/updateStudentRegister/{id}","/deleteStudentRegister/{id}","/page/{pageNo}").hasRole("STUDENT")
+                .requestMatchers("/student/addStudentRegister","/updateStudentRegister/{id}","/deleteStudentRegister/{id}","/page/{pageNo}","/search/filterByName").hasRole("STUDENT")
                 .requestMatchers("/student/**").authenticated()
                 .and()
                 .formLogin()

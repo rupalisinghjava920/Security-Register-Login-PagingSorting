@@ -2,6 +2,7 @@ package com.spring.login.service;
 
 import com.spring.login.entity.StudentRegister;
 import com.spring.login.repository.StudentRegisterRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class StudentRegisterServiceImpl implements StudentRegisterService {
 
     @Autowired
@@ -46,8 +48,6 @@ public class StudentRegisterServiceImpl implements StudentRegisterService {
     @Override
     public void deleteStudentRegisterById(Long id) {
       this.studentRegisterRepository.deleteById(id);
-
-
     }
 
     @Override
@@ -57,6 +57,11 @@ public class StudentRegisterServiceImpl implements StudentRegisterService {
 
         Pageable pageable= PageRequest.of(pageNo - 1,pageSize,sort);
         return this.studentRegisterRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<StudentRegister> getStudentRegisterByStudentName(String studentName) {
+        return studentRegisterRepository.findByStudentName(studentName);
     }
 
 }
