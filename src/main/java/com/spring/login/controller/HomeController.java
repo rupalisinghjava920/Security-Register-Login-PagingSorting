@@ -54,25 +54,22 @@ public class HomeController {
         return "login";
     }
 
-//    @GetMapping("/student/profile")
-//    public String profile(Principal p, Model m) {
-//        String email = p.getName(); // rupali123@gmail.com
-//        System.out.println(email);
-//        Student student = studentRepository.findByEmail(email); // rupali@gmail.com
-//        String username = student.getEmail();
-//        System.out.println(username);
-//        m.addAttribute("student", student);
-//
-//        if (username.equals(email)) {
-//            return "profile";
-//        } else {
-//            return "login";
-//        }
-//    }
-    @GetMapping("/profile")
-    public String profile(){
-        return "profile";
+    @GetMapping("/student/profile")
+    public String profile(Principal p, Model m) {
+        String email = p.getName(); // rupali123@gmail.com
+        System.out.println(email);
+        Student student = studentRepository.findByEmail(email); // rupali@gmail.com
+        String username = student.getEmail();
+        System.out.println(username);
+        m.addAttribute("student", student);
+
+        if (username.equals(email)) {
+            return "profile";
+        } else {
+            return "login";
+        }
     }
+
 
     @GetMapping("/home")
     public String home() {
@@ -145,7 +142,7 @@ public class HomeController {
                                 @RequestParam("sortField") String sortField, @RequestParam("sortDir") String sortDir, Model model) {
 
 
-        Page<StudentRegister> page = studentRegisterService.findPaginated(pageNo, 5, sortField, sortDir);
+        Page<StudentRegister> page = studentRegisterService.findPaginated(pageNo, 10, sortField, sortDir);
         List<StudentRegister> studentRegisterList = page.getContent();
 
         model.addAttribute("currentPage", pageNo);
