@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public interface StudentRegisterService {
 
+
     public StudentRegister saveStudentRegister(StudentRegister studentRegister);
 
     List<StudentRegister> getAllStudentRegisters();
