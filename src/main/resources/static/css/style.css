@@ -17,5 +17,37 @@ body{
 
 .my-card{
 	padding:50px;
-	background: #ffffff;
+	 border: 1px solid crimson;
+	background-color: slategrey;
 }
+
+
+.card{
+height: 400px;
+margin-top: auto;
+margin-bottom: auto;
+width: 500px;
+ border: 1px solid hotpink;
+background-color: rgba(0,0,0,0.5) !important;
+}
+
+.social_icon{
+position: absolute;
+right: 20px;
+top: -45px;
+}
+
+
+.social_icon span:hover{
+color: white;
+cursor: pointer;
+}
+
+.card-header h3{
+color: white;
+}
+
+
+
+
+

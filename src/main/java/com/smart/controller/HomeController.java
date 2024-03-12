@@ -2,6 +2,8 @@ package com.smart.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //import org.springframework.security.core.userdetails.UserDetailsService;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -24,12 +26,12 @@ import jakarta.validation.Valid;
 @Controller
 public class HomeController {
 
-//	@Autowired
-//	@Qualifier("customUserDetailsServiceImpl")
-//    private UserDetailsService userDetailsService;
-//	
-//	@Autowired
-//	private BCryptPasswordEncoder passwordEncoder;
+	@Autowired
+	@Qualifier("customUserDetailsServiceImpl")
+    private UserDetailsService userDetailsService;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -71,10 +73,10 @@ public class HomeController {
 				return "registertion";
 			}
 			
-			user.setRole("Role_User");
+			user.setRole("ROLE_USER");
 			user.setEnabled(true);
 			user.setImageUrl("notebook.jpg");
-			//user.setPassword(passwordEncoder.encode(user.getPassword()));
+			user.setPassword(passwordEncoder.encode(user.getPassword()));
 			
 			System.out.println("Agreement " +agreement);
 			System.out.println("User " + user);
@@ -91,5 +93,12 @@ public class HomeController {
 			session.setAttribute("message",new Message("Something Went Wrong !!" + e.getMessage(),"alert-danger"));
 			return "registertion";
 		}
+	}
+	
+	//handler for custom login
+	@GetMapping("/login")
+	public String customlogin(Model model) {
+		model.addAttribute("title","Login-Smart Contact Manager");
+		return "login";
 	}
 }

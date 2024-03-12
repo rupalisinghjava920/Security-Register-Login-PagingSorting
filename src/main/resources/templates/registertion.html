@@ -15,7 +15,7 @@
 	      
 	        <div class="my-card mt-4 mb-4">
 	        
-	          <div th:if="${session.message}" th:classappend="${session.message.type}" class="alert">
+	          <div th:if="${session.message}" th:classappend="${session.message.type}" class="text-center alert">
 	        
 		          <p th:text="${session.message.content}"></p>
 		          
@@ -86,7 +86,7 @@
 			  
 			  <div class="form-group">
 			     
-			    <textarea name="about" 
+			    <textarea name="about " 
 			              th:text="${user.about}" 
 			              placeholder="Enter About yourself" 
 			              rows="6" 
@@ -96,7 +96,7 @@
 			   
 			   <!-- terms and condition agreement -->
 			   
-			     <div class="form group form-check text-center">
+			     <div class="form group form-check">
 			     
 			         <input type="checkbox"
 			                 name="agreement"
